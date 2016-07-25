@@ -1,1 +1,18 @@
+<p><%= flash[:error] %><p>
 <li id="sign-out"><%= link_to "Sign Out", logout_path, method: :delete %></li>
+
+<div class="link-form">
+  <%= form_for(@link, url: links_path, method: :post) do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.label :url %>
+    <%= f.password_field :url %>
+    <%= f.submit "Submit" %>
+  <% end %>
+</div>
+
+<h3>Links!</h3>
+<% @links.each do |link| %>
+  <h5><%= link.title %></h5>
+  <p><%= link_to "#{link.title}", link.url %></p>
+<% end %>

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root "links#index"
 
+  resources :links, only: [:index, :create]
   get "/authentication", to: "authentication#show"
 
   post "/login", to: "sessions#create"
