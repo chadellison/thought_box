@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Thought Box
+* This Application is run using Rails 5
 
-Things you may want to cover:
+* Git clone and install rails 5
 
-* Ruby version
+* The test suite can be run with "rspec"
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* The app is deployed [here](https://pure-lowlands-21799.herokuapp.com/authentication) 
