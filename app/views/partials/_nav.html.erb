@@ -1,0 +1,13 @@
+<div class="nav">
+  <ul>
+    <% unless current_user %>
+      <li id="log-in"><a href="#">Log In</a></li>
+      <li id="sign-up"><a href="#">Sign Up</a></li>
+    <% end %>
+    <li id="sign-out"><%= link_to "Sign Out", logout_path, method: :delete if current_user %></li>
+    <li id="sort"><a href="#">Sort</a></li>
+    <li id="read"><a href="#">Read</a></li>
+    <li id="unread"><a href="#">Unread</a></li>
+    <li><input id="search" type="text" name="search" placeholder="Search Links"></a></li>
+  </ul>
+</div>
