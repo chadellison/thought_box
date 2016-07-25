@@ -5,7 +5,7 @@ RSpec.feature "user can add links" do
     User.create(username: "jones", password: "123", email: "j@gmail")
 
     visit root_path
-
+    
     click_on "Log In"
     within ".log-in" do
       fill_in "Username", with: "jones"

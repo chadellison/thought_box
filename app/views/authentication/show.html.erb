@@ -1,9 +1,5 @@
 <h3>Please Log In or Sign Up</h3>
 
-<button id="log-in">Log In</button>
-<button id="sign-up">Sign Up</button>
-<!-- <button id="sign-out"><%= link_to "Sign Out", logout_path, method: :delete %></button> -->
-
 <div class="log-in hidden">
   <%= form_for(:session, url: login_path, method: :post) do |f| %>
     <%= f.label :username %>
