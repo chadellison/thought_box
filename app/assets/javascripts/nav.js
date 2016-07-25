@@ -3,8 +3,6 @@ $(document).ready(function() {
     console.log("hi")
     $(".links")
     $(".all-links").append($(".links").text().split("Edit").sort(".links"))
-
-    // $(".all-links").remove()
   });
 
   $("#read").on("click", function() {
@@ -16,7 +14,6 @@ $(document).ready(function() {
   })
 
   $("#search").keyup("click", function() {
-    console.log("hi")
     var text = $(this).val()
     $.each($(".links"), function(index, div) {
       if (!$(div).text().includes(text)) {
