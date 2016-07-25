@@ -14,9 +14,11 @@ RSpec.feature "user can add links" do
     end
     url = "http://www.popsugar.com/tech/Funny-Cat-GIFs-35436224#photo-35436224"
 
-    fill_in "Title", with: "Angry Cat"
-    fill_in "Url", with: url
-    click_on "Submit"
+    within(".link-form") do
+      fill_in "Title", with: "Angry Cat"
+      fill_in "Url", with: url
+      click_on "Submit"
+    end
     expect(page).to have_content "Links"
     expect(page).to have_content "Angry Cat"
     expect(Link.last.read).to eq false
@@ -34,11 +36,11 @@ RSpec.feature "user can add links" do
       click_on "Sign In"
     end
     url = "blahblouse"
-
-    fill_in "Title", with: "invalid link"
-    fill_in "Url", with: url
-    click_on "Submit"
-
+    within(".link-form") do
+      fill_in "Title", with: "invalid link"
+      fill_in "Url", with: url
+      click_on "Submit"
+    end
     expect(page).to have_content "The Url must be valid"
     expect(page).not_to have_content "invalid link"
   end
