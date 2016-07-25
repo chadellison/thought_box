@@ -13,8 +13,7 @@
 
 <h3>Links!</h3>
 <% @links.each do |link| %>
-  <h5><%= link.title %></h5>
-  <div class="links">
+  <div class="links has-not-been-read">
     <p><%= link_to "#{link.title}", link.url, class: :link %></p>
     <%= button_to "Mark as Read", link_path(link.id, status: "read"), class: :read, method: :patch, remote: true %>
     <%= button_to "Mark as Unread", link_path(link.id, status: "unread"), class: :unread, method: :patch, remote: true %>
