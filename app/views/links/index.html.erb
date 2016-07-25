@@ -14,9 +14,20 @@
 <h3>Links!</h3>
 <% @links.each do |link| %>
   <h5><%= link.title %></h5>
-  <div>
+  <div class="links">
     <p><%= link_to "#{link.title}", link.url, class: :link %></p>
     <%= button_to "Mark as Read", link_path(link.id, status: "read"), class: :read, method: :patch, remote: true %>
     <%= button_to "Mark as Unread", link_path(link.id, status: "unread"), class: :unread, method: :patch, remote: true %>
+    <button type="button" name="button" class="edit" id="<%= link.id %>" value="Edit">Edit</button>
+  </div>
+
+  <div class="edit-form hidden" id="edit-<%= link.id %>">
+    <%= form_for(@link, url: link_path(link.id), method: :patch, remote: true) do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :title, value: "#{link.title}" %>
+      <%= f.label :url %>
+      <%= f.text_field :url, value: "#{link.url}" %>
+      <%= f.submit "Submit", class: :update %>
+    <% end %>
   </div>
 <% end %>

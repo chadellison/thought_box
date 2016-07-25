@@ -19,10 +19,11 @@ class LinksController < ApplicationController
 
   def update
     link = Link.find(params[:id])
-    if params[:status] == "read"
-      link.update(read: true)
+    if params[:status]
+      params[:status] == "read" ? link.update(read: true) : link.update(read: false)
     else
-      link.update(read: false)
+      link.update(link_params)
+      flash[:error] = "The Url must be valid" if !link.save
     end
     respond_to do |format|
       format.html { redirect_to root_path }
@@ -36,15 +37,3 @@ class LinksController < ApplicationController
       params.require(:link).permit(:title, :url)
     end
 end
-
-
-# respond_to do |format|
-#     if @user.save
-#       format.html { redirect_to @user, notice: 'User was successfully created.' }
-#       format.js   {}
-#       format.json { render json: @user, status: :created, location: @user }
-#     else
-#       format.html { render action: "new" }
-#       format.json { render json: @user.errors, status: :unprocessable_entity }
-#     end
-#   end
