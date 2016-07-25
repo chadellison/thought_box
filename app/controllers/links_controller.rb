@@ -9,13 +9,12 @@ class LinksController < ApplicationController
   end
 
   def create
-    # link = params[:id]
     link = Link.create(link_params)
     if link.save
-      redirect_to root_path
     else
       flash[:error] = "The Url must be valid"
     end
+    redirect_to root_path
   end
 
   private
