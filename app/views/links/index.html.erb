@@ -6,7 +6,7 @@
     <%= f.label :title %>
     <%= f.text_field :title %>
     <%= f.label :url %>
-    <%= f.password_field :url %>
+    <%= f.text_field :url %>
     <%= f.submit "Submit" %>
   <% end %>
 </div>
@@ -14,5 +14,9 @@
 <h3>Links!</h3>
 <% @links.each do |link| %>
   <h5><%= link.title %></h5>
-  <p><%= link_to "#{link.title}", link.url %></p>
+  <div>
+    <p><%= link_to "#{link.title}", link.url, class: :link %></p>
+    <%= button_to "Mark as Read", link_path(link.id, status: "read"), class: :read, method: :patch, remote: true %>
+    <%= button_to "Mark as Unread", link_path(link.id, status: "unread"), class: :unread, method: :patch, remote: true %>
+  </div>
 <% end %>
