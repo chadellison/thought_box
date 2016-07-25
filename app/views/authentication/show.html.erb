@@ -1,0 +1,23 @@
+<h3>Please Log In or Sign Up</h3>
+
+<div class="sign-in hidden">
+  <%= form_for(:session, url: login_path, method: :post) do |f| %>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <%= f.submit "Sign in" %>
+  <% end %>
+</div>
+
+<div class="create-account hidden">
+  <%= form_for(:user, url: users_path, method: :post) do |f| %>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <%= f.submit "Create Account" %>
+  <% end %>
+</div>
