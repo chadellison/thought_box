@@ -12,12 +12,18 @@ $(document).ready(function() {
   $("#unread").on("click", function() {
     $(".has-been-read").hide()
   })
+  $("#all").on("click", function() {
+    $(".has-been-read").show()
+    $(".has-not-been-read").show()
+  })
 
   $("#search").keyup("click", function() {
     var text = $(this).val()
     $.each($(".links"), function(index, div) {
       if (!$(div).text().includes(text)) {
         $(div).hide()
+      } else {
+        $(div).show()
       }
     })
   })
