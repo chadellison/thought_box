@@ -1,10 +1,14 @@
 $(document).ready(function() {
   $("#sort").on("click", function() {
-    console.log("hi")
+    $(".links").toggleClass("desc")
     var links = $(".links")
     $(".all-links").children().remove()
 
     sortedLinks = links.sort(sortByLink)
+
+    if (links.hasClass("desc")) {
+      sortedLinks = sortedLinks.get().reverse()
+    }
 
     $.each(sortedLinks, function(index, div) {
       $(".all-links").append(div)
