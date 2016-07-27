@@ -1,7 +1,7 @@
 class LinksController < ApplicationController
   def index
     if current_user
-      @links = Link.all
+      @links = current_user.links
       @link = Link.new
     else
       redirect_to authentication_path
@@ -9,8 +9,9 @@ class LinksController < ApplicationController
   end
 
   def create
-    link = Link.create(link_params)
+    link = current_user.links.create(link_params)
     if link.save
+
     else
       flash[:error] = "The Url must be valid"
     end

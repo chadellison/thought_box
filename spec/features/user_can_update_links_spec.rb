@@ -2,8 +2,8 @@ require "rails_helper"
 
 RSpec.feature "user can update links" do
   scenario "user sees link change" do
-    User.create(username: "bob", password: "123", email: "b@gmail")
-    Link.create(title: "google", url: "google.com")
+    user = User.create(username: "bob", password: "123", email: "b@gmail")
+    user.links.create(title: "google", url: "google.com")
 
     visit root_path
 
@@ -20,8 +20,8 @@ RSpec.feature "user can update links" do
   end
 
   scenario "user sees link change back to unread" do
-    User.create(username: "bob", password: "123", email: "b@gmail")
-    Link.create(title: "google", url: "google.com", read: true)
+    user = User.create(username: "bob", password: "123", email: "b@gmail")
+    user.links.create(title: "google", url: "google.com", read: true)
 
     visit root_path
 
