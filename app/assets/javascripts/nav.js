@@ -17,32 +17,23 @@ $(document).ready(function() {
 
   $("#read").on("click", function() {
     $(".has-not-been-read").hide()
+    $(".has-been-read").show()
   })
 
   $("#unread").on("click", function() {
     $(".has-been-read").hide()
+    $(".has-not-been-read").show()
   })
+
   $("#all").on("click", function() {
     $(".has-been-read").show()
     $(".has-not-been-read").show()
   })
 
   $("#search").keyup("click", function() {
-    var text = $(this).val()
-    $.each($(".links"), function(index, div) {
-      if (!$(div).text().includes(text)) {
-        $(div).hide()
-      } else {
-        $(div).show()
-      }
-    })
+    searchBar($(this).val())
   })
 });
-
-function removeLinks() {
-  $(".has-not-been-read").hide()
-  $(".has-been-read").hide()
-}
 
 function sortByLink(div1, div2) {
   if ($(div1).text().trim()[0] < $(div2).text().trim()[0]) {
@@ -52,4 +43,13 @@ function sortByLink(div1, div2) {
   } else {
     return 0
   }
+}
+function searchBar(text) {
+  $.each($(".links"), function(index, div) {
+    if (!$(div).text().includes(text)) {
+      $(div).hide()
+    } else {
+      $(div).show()
+    }
+  })
 }
