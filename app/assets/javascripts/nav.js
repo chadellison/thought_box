@@ -1,8 +1,14 @@
 $(document).ready(function() {
   $("#sort").on("click", function() {
     console.log("hi")
-    $(".links")
-    $(".all-links").append($(".links").text().split("Edit").sort(".links"))
+    var links = $(".links")
+    $(".all-links").children().remove()
+
+    sortedLinks = links.sort(sortByLink)
+
+    $.each(sortedLinks, function(index, div) {
+      $(".all-links").append(div)
+    })
   });
 
   $("#read").on("click", function() {
@@ -28,3 +34,18 @@ $(document).ready(function() {
     })
   })
 });
+
+function removeLinks() {
+  $(".has-not-been-read").hide()
+  $(".has-been-read").hide()
+}
+
+function sortByLink(div1, div2) {
+  if ($(div1).text().trim()[0] < $(div2).text().trim()[0]) {
+    return -1
+  } else if ($(div1).text().trim()[0] > $(div2).text().trim()[0]) {
+    return 1
+  } else {
+    return 0
+  }
+}
