@@ -1,0 +1,45 @@
+.read, .unread, .edit {
+  margin-left: 5px;
+  background-color: #0092b3;
+  color: white;
+  font-size: 10px;
+  font-family: Sans-serif;
+  border: none;
+  outline: none;
+  margin-top: 5px;
+  padding: 4px;
+}
+
+.read:hover:not(.active), .unread:hover:not(.active), .edit:hover:not(.active) {
+  background-color: #00bbe6;
+}
+
+.read:active, .unread:active, .edit:active {
+  transform: translateY(2px);
+}
+
+.new-link, .update {
+  padding: 4px;
+  margin-left: 8px;
+  background-color: #b30000;
+  color: white;
+  font-size: 15px;
+  font-family: Sans-serif;
+  border: none;
+  outline: none;
+  margin-top: 8px;
+}
+
+.new-link:hover:not(.active), .update:hover:not(.active) {
+  background-color: #cc0000;
+}
+
+.new-link:active, .update:active {
+  transform: translateY(2px);
+}
+
+#search {
+  margin: 5px;
+  width: 90%;
+  border: 1px solid #0092b3;
+}
