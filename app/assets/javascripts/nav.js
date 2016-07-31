@@ -6,7 +6,8 @@ $(document).ready(function() {
   });
 
   $("#read").on("click", function() {
-    filterRead()
+    $(".has-not-been-read").hide()
+    $(".has-been-read").show()
   })
 
   $("#unread").on("click", function() {
@@ -41,9 +42,4 @@ function searchBar(text) {
       $(div).show()
     }
   })
-}
-
-function filterRead() {
-  $(".has-not-been-read").hide()
-  $(".has-been-read").show()
 }
