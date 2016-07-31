@@ -22,13 +22,14 @@ class LinksController < ApplicationController
     link = Link.find(params[:id])
     if params[:status]
       params[:status] == "read" ? link.update(read: true) : link.update(read: false)
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js {}
+      end
     else
-      link.update(link_params)
-      flash[:error] = "The Url must be valid" if !link.save
-    end
-    respond_to do |format|
-      format.html { redirect_to root_path }
-      format.js {}
+      link = link.update(link_params)
+      flash[:error] = "The Url must be valid" if !link
+      redirect_to root_path
     end
   end
 

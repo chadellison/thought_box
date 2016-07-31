@@ -21,7 +21,7 @@
   </div>
 
   <div class="edit-form hidden" id="edit-<%= link.id %>">
-    <%= form_for(@link, url: link_path(link.id), method: :patch, remote: true) do |f| %>
+    <%= form_for(@link, url: link_path(link.id), method: :patch) do |f| %>
       <%= f.label :title %>
       <%= f.text_field :title, value: "#{link.title}", class: "title" %>
       <%= f.label :url %>
