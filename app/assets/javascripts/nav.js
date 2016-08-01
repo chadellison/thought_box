@@ -1,18 +1,8 @@
 $(document).ready(function() {
   $("#sort").on("click", function() {
-    $(".links").toggleClass("desc")
-    var links = $(".links")
-    $(".all-links").children().remove()
-
-    sortedLinks = links.sort(sortByLink)
-
-    if (links.hasClass("desc")) {
-      sortedLinks = sortedLinks.get().reverse()
-    }
-
-    $.each(sortedLinks, function(index, div) {
-      $(".all-links").append(div)
-    })
+    $("#sort").toggleClass("desc")
+    var sortedLinks = $(".all-links").children().sort(sortByLink)
+    $(".all-links").replaceWith(sortedLinks)
   });
 
   $("#read").on("click", function() {
