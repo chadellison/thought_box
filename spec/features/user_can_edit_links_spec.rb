@@ -14,6 +14,8 @@ RSpec.feature "user can edit links" do
       click_on "Sign In"
     end
 
+    expect(Link.last.title).to eq "cat"
+
     click_on "Edit"
     within(".edit-form") do
       fill_in "Title", with: "Grumpy Cat"
@@ -21,6 +23,7 @@ RSpec.feature "user can edit links" do
       click_on "Submit"
     end
     expect(page).to have_content "Grumpy Cat"
+    expect(Link.last.title).to eq "Grumpy Cat"
   end
 
   scenario "edited links must be valid" do
@@ -34,6 +37,7 @@ RSpec.feature "user can edit links" do
       fill_in "Password", with: "123"
       click_on "Sign In"
     end
+
     url = "blahblouse"
     click_on "Edit"
     within ".edit-form" do
@@ -43,5 +47,6 @@ RSpec.feature "user can edit links" do
     expect(page).to have_content "The Url must be valid"
     expect(page).not_to have_content "invalid link"
     expect(page).to have_content "cat"
+    expect(Link.last.title).to eq "cat"
   end
 end
